@@ -1,0 +1,7 @@
+{
+  "name": "WF_AX_Test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

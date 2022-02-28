@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "WF_AX_Test",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
