@@ -281,8 +281,7 @@ export class AuthService {
   }
 
   validateUserProfiles(user: User): boolean {
-    if (this.currentStakeholderGid && this.currentStakeholderGid != '' && this.currentTenantId > 0)
-      {return true;}
+    if (this.currentStakeholderGid && this.currentStakeholderGid != '' && this.currentTenantId > 0) { return true; }
 
     return false;
   }
@@ -402,9 +401,10 @@ export class AuthService {
     else {
       //  user needs to enable web browser cookies
       this.router.navigate(['/error'], {
-        queryParams: { error: `Your browser was unable to access the site.\n If this problem persists, 
+        queryParams: {
+          error: `Your browser was unable to access the site.\n If this problem persists, 
                   please ensure that cookies are enabled or contact support.`
-                }
+        }
       });
       return;
     }
@@ -413,7 +413,7 @@ export class AuthService {
   startAuthenticationHref(url): Promise<void> {
     this.manager = new UserManager(getClientSettings(true));
     const l = HTMLDomUtils.sessionStorageGetItem('urlcallback');
-    if (!l) {HTMLDomUtils.sessionStorageSetItem('urlcallback', url);}
+    if (!l) { HTMLDomUtils.sessionStorageSetItem('urlcallback', url); }
     return this.manager.signinRedirect();
   }
 
@@ -484,20 +484,20 @@ export function getClientSettings(includeMaxAge: boolean): UserManagerSettings {
   }
 
   return {
-    authority: environment.authority, //"https://localhost:44346/", //
-    client_id: 'giftedmatrixfe',
-    redirect_uri: environment.appBaseUrl + 'auth',
-    post_logout_redirect_uri: environment.appBaseUrl,
+    authority: environment.authority,
+    client_id: 'WF_AX_Test',
+    redirect_uri: 'http://localhost:8100/auth',
+    post_logout_redirect_uri: 'http://localhost:8100/',
     response_type: 'code',
     scope:
-      'openid grantapi hubapi userdetails wfadaptorapi stakeholderserviceapi matrixuiapi communicationserviceapi financialserviceapi identityserviceapi',
+      'openid userdetails matrixuiapi',
     filterProtocolClaims: true,
     loadUserInfo: true,
     // automaticSilentRenew: true,
     revokeAccessTokenOnSignout: true,
     accessTokenExpiringNotificationTime: 600, //3540 for testing = 59 minutes prior to 1 hour token expiring,
-    silent_redirect_uri: environment.appBaseUrl + 'assets/silent-renew.html',
-    acr_values,
+    // silent_redirect_uri: environment.appBaseUrl + "assets/silent-renew.html",
+    // acr_values: acr_values,
     max_age: (includeMaxAge) ? 18000 : 0 //5 hours (Specifies the allowable elapsed time in seconds since the last time the End-User was actively authenticated by the OP)
   };
 }

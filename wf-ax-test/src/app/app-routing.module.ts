@@ -15,6 +15,11 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'auth',
+    redirectTo: 'home/list',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

@@ -13,16 +13,6 @@ export class HomePage {
     private authService: AuthService
   ) {}
 
-  refresh(ev) {
-    setTimeout(() => {
-      ev.detail.complete();
-    }, 3000);
-  }
-
-  getMessages(): Message[] {
-    return this.data.getMessages();
-  }
-
   signIn(event): void {
     event.preventDefault();
     this.authService.startAuthentication();
