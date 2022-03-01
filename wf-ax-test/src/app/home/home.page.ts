@@ -26,7 +26,7 @@ export class HomePage {
   signIn(event): void {
     event.preventDefault();
     this.authService.startAuthentication();
-    console.log("signing in...")
+    console.log('signing in...');
   }
 
 }
